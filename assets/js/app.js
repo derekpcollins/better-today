@@ -10,7 +10,7 @@ var lists = [
 			"Write today?",
 			"Read today?",
 			"Make time for your family today?",
-			"Accomplish at least one thing on your to do list today?"
+			"Accomplish something from your to do list today?"
 		]
 	},
 	{
