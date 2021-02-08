@@ -2,6 +2,7 @@
 	color-scheme: light dark;
 	--background-color: #fff;
 	--text-color: rgba(0,0,0,.9);
+	--text-color-light: rgba(0,0,0,.3);
 	--check-box-fill-color: green;
 	--check-box-background-color: #fff;
 	--check-box-border-color: rgba(0,0,0,.15);
@@ -14,6 +15,7 @@
 	:root {
 		--background-color: #1a1a1a;
 		--text-color: rgba(255,255,255,.9);
+		--text-color-light: rgba(255,255,255,.3);
 		--check-box-fill-color: green;
 		--check-box-background-color: #333;
 		--check-box-border-color: rgba(255,255,255,.1);
@@ -37,7 +39,7 @@ body {
 h1 {
 	font-family: 'Permanent Marker', cursive;
 	font-size: 2.5rem;
-	margin: 0 0 8px 0;
+	margin: 0 0 4px 0;
 }
 
 h2 {
@@ -56,6 +58,7 @@ header.clouds {
 }
 
 header > p {
+	color: var(--text-color-light);
 	margin: 0;
 }
 
