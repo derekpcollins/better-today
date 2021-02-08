@@ -54,6 +54,7 @@ var buildLists = (arr, el) => {
 			var itemStatus = localStorage.getItem('item-' + id + '-' + index);
 			if(itemStatus !== null) {
 				listItemElement.classList.add('complete');
+				listItemElement.setAttribute('data-complete', true);
 			}
 			
 			// Attach click handler to each item
@@ -90,6 +91,14 @@ var setDate = () => {
 	today.setHours(0, 0, 0, 0);
 	
 	localStorage.setItem('date', today);
+	
+	// Set the date in the UI
+	var todayElement = document.getElementById('today');
+	var year = new Intl.DateTimeFormat('en-US', { year: 'numeric' }).format(today);
+	var month = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(today);
+	var day = new Intl.DateTimeFormat('en-US', { day: 'numeric' }).format(today);
+	var weekday = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(today);
+	todayElement.innerHTML = (`${weekday}, ${month} ${day}, ${year}`);
 }
 
 
@@ -126,4 +135,28 @@ var handleItemClick = (event) => {
 	}
 }
 
-// Method to reset lists after reload (if date is different than stored date)
+
+// Get weather data
+// Create a request variable and assign a new XMLHttpRequest object to it.
+var request = new XMLHttpRequest();
+
+// Open a new connection, using the GET request on the URL endpoint
+request.open('GET', 'https://api.openweathermap.org/data/2.5/weather?q=Lakewood,OH,US&appid=01ab9ffe4dd21947796ab0dcc2db597b', true)
+
+request.onload = (data) => {
+	var response = JSON.parse(data.target.response);
+	var weather = response.weather[0];
+	
+	setScene(weather);
+}
+
+// Send request
+request.send();
+
+
+var setScene = (weather) => {
+	var headerElement = document.getElementsByTagName('header')[0];
+	var weatherMain = weather.main;
+	//var weatherDescription = weather.description;
+	headerElement.classList.add(weatherMain.toLowerCase());
+}
