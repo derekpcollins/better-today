@@ -64,34 +64,34 @@ var buildLists = (arr, el) => {
 };
 
 
-// Check the date and clear localStorage if date doesn't match today
-var isToday = () => {
-	var today = new Date();
-	today.setHours(0, 0, 0, 0);
-	var storedDate = new Date(localStorage.getItem('date')); 
-	storedDate.setHours(0, 0, 0, 0);
+// Global var for today's date
+var today = new Date();
+today.setHours(0, 0, 0, 0);
+
+
+// Check the date
+var checkDate = (today) => {	
+	var storedDate = localStorage.getItem('date');
 	
-	var result = false;
-	
-	if(storedDate === today) {
-		result = true;
+	if(storedDate) {
+		// If a date is stored, compare to see if it's still today
+		// NOTE: Convert dates to strings to run this kind of comparison
+		if(storedDate.toString() !== today.toString()) {
+			// It doesn't match, so...
+			// Clear localStorage
+			localStorage.clear();
+			
+			// Set today's date
+			localStorage.setItem('date', today);
+		}
+	} else {
+		// There's no stored date, so set it to today
+		localStorage.setItem('date', today);
 	}
-	
-	return result;
 }
 
-var setDate = () => {
-	if(isToday()) {
-		// Clear localStorage
-		localStorage.clear();
-	}
-	
-	// Set the date
-	var today = new Date();
-	today.setHours(0, 0, 0, 0);
-	
-	localStorage.setItem('date', today);
-	
+
+var setUIDate = (today) => {	
 	// Set the date in the UI
 	var todayElement = document.getElementById('today');
 	var year = new Intl.DateTimeFormat('en-US', { year: 'numeric' }).format(today);
@@ -100,14 +100,6 @@ var setDate = () => {
 	var weekday = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(today);
 	todayElement.innerHTML = (`${weekday}, ${month} ${day}, ${year}`);
 }
-
-
-// Check if it's a new day
-setDate();
-
-// Call the buildLists method to populate the page
-var listsElement = document.getElementById('lists');
-buildLists(lists, listsElement);
 
 
 // Method to handle clicking on an item
@@ -155,8 +147,20 @@ request.send();
 
 
 var setScene = (weather) => {
+	console.log('Weather: ', weather);
 	var headerElement = document.getElementsByTagName('header')[0];
 	var weatherMain = weather.main;
 	//var weatherDescription = weather.description;
 	headerElement.classList.add(weatherMain.toLowerCase());
 }
+
+
+// Check the stored date
+checkDate(today);
+
+// Set the date in the UI
+setUIDate(today);
+
+// Call the buildLists method to populate the page
+var listsElement = document.getElementById('lists');
+buildLists(lists, listsElement);
