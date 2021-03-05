@@ -3,7 +3,7 @@
 	--background-color: #fff;
 	--text-color: rgba(0,0,0,.9);
 	--text-color-light: rgba(0,0,0,.3);
-	--check-box-fill-color: green;
+	--check-box-fill-color: #009645;
 	--check-box-background-color: #fff;
 	--check-box-border-color: rgba(0,0,0,.15);
 	
@@ -18,7 +18,7 @@
 		--background-color: #1a1a1a;
 		--text-color: rgba(255,255,255,.9);
 		--text-color-light: rgba(255,255,255,.3);
-		--check-box-fill-color: green;
+		--check-box-fill-color: #34A764;
 		--check-box-background-color: #333;
 		--check-box-border-color: rgba(255,255,255,.1);
 		
