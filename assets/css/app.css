@@ -38,6 +38,10 @@ body {
 	user-select: none;
 }
 
+body::-webkit-scrollbar { 
+	display: none;  /* Safari and Chrome */
+}
+
 h1 {
 	font-family: 'Permanent Marker', cursive;
 	font-size: 2.5rem;
@@ -52,9 +56,11 @@ h2 {
 
 header {
 	background-color: var(--weather-background);
-	padding: 2.4rem 0 0 0;
+	padding: 1.8rem 0 0 0;
 	position: relative;
 	//height: 196px;
+	position: sticky;
+	top: 0;
 }
 
 /*header.clouds {
