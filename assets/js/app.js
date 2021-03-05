@@ -10,19 +10,9 @@ var lists = [
 			"Write today?",
 			"Read today?",
 			"Make time for your family today?",
+			"Stay on budget today?",
+			"Keep your house organized?",
 			"Accomplish something from your to do list today?"
-		]
-	},
-	{
-		"title": "Is your...",
-		"list": [
-			"House organized today?"
-		]
-	},
-	{
-		"title": "Are you...",
-		"list": [
-			"On budget today?"
 		]
 	}
 ];
