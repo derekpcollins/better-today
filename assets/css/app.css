@@ -7,6 +7,8 @@
 	--check-box-background-color: #fff;
 	--check-box-border-color: rgba(0,0,0,.15);
 	
+	--water-background: rgba(20,142,254,.1);
+	
 	--weather-background: #efefef;
 	--weather-background-clouds: #ccc;
 }
@@ -21,7 +23,7 @@
 		--check-box-border-color: rgba(255,255,255,.1);
 		
 		--weather-background: #111;
-		--weather-background-clouds: #111;
+		--weather-background-clouds: #222;
 	}
 }
 
@@ -50,17 +52,54 @@ h2 {
 
 header {
 	background-color: var(--weather-background);
+	position: relative;
+	//height: 196px;
+}
+
+/*header.clouds {
+	background-color: var(--weather-background-clouds);
+	background-image: url(../img/clouds.png);
+	background-repeat: repeat-x;
+	background-size: 100%;
+	background-position: 0 0;
+}
+
+header::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 24px;
+	width: 100%;
+	background: var(--water-background);
+}*/
+
+#title {
+	/*position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;*/
 	padding: 2rem;
 }
 
-header.clouds {
-	background-color: var(--weather-background-clouds);
-}
+/*#title h1 {
+	z-index: 2;
+}*/
 
-header > p {
+#title p {
 	color: var(--text-color-light);
 	margin: 0;
+	//z-index: 2;
 }
+
+/*#cle-skyline {
+	position: absolute;
+	bottom: 24px;
+	left: 0;
+	width: 110%;
+	fill: rgba(0,0,0,.6);
+	z-index: 0;
+}*/
 
 section {
 	padding: 2rem;
